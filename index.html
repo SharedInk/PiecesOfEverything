@@ -348,4 +348,328 @@
       <div class="card" style="margin-top:18px">
         <h2>Submit</h2>
         <p class="muted">
-          No emailing needed.
+          No emailing needed.<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pieces of Everything</title>
+  <meta name="description" content="A student-run platform welcoming every kind of writing." />
+  <style>
+    :root{
+      --bg:#fff6cc;              /* pale yellow */
+      --card:rgba(255,255,255,.85);
+      --text:#1c1c22;
+      --muted:#4b4b55;
+      --line:rgba(0,0,0,.10);
+      --accent:rgba(139,92,246,.18);
+      --shadow:0 10px 28px rgba(0,0,0,.10);
+      --r:20px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:var(--sans);
+      line-height:1.55;
+      background:
+        radial-gradient(900px 400px at 10% 0%, rgba(139,92,246,.18), transparent 60%),
+        radial-gradient(900px 400px at 90% 0%, rgba(255,107,154,.14), transparent 60%),
+        radial-gradient(900px 400px at 75% 90%, rgba(24,164,122,.14), transparent 55%),
+        var(--bg);
+    }
+    .wrap{max-width:1040px; margin:0 auto; padding:18px 14px 56px}
+    header{
+      position:sticky; top:12px; z-index:10;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(139,92,246,.35), rgba(255,107,154,.28), rgba(24,164,122,.22));
+    }
+    .brand b{font-size:16px}
+    .brand small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+    nav{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end}
+    nav button{
+      border:1px solid transparent;
+      background:transparent;
+      color:var(--muted);
+      padding:9px 11px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    nav button.active{border-color:var(--line); background:var(--accent); color:var(--text)}
+    section{display:none}
+    section.active{display:block}
+
+    .hero, .card{
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      background:var(--card);
+      box-shadow:var(--shadow);
+    }
+    .hero{margin-top:16px; padding:22px 16px}
+    .hero h1{margin:0 0 8px; font-family:var(--serif); font-size:38px; letter-spacing:-.3px}
+    .hero p{margin:0; color:var(--muted); font-size:14.5px; max-width:860px}
+    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .pill{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.65);
+      padding:7px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.8);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:14px;
+      box-shadow:0 6px 16px rgba(0,0,0,.08);
+    }
+    .btn.primary{background:rgba(139,92,246,.18); border-color:rgba(139,92,246,.45)}
+    .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:12px; margin-top:12px}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} .hero h1{font-size:32px} }
+
+    .card{padding:14px 14px; margin-top:12px}
+    .card h2{margin:0 0 8px; font-size:15px; letter-spacing:.2px}
+    .muted{color:var(--muted); font-size:14px}
+    .line{height:1px; background:var(--line); margin:12px 0}
+
+    .post{border-top:1px solid var(--line); padding-top:10px; margin-top:10px}
+    .post:first-child{border-top:none; padding-top:0; margin-top:0}
+    .post h3{margin:0 0 4px; font-size:17px}
+    .meta{color:var(--muted); font-size:12.5px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .tag{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      padding:5px 9px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .mini-grid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px}
+    @media (max-width: 520px){ .mini-grid{grid-template-columns:1fr} }
+    .mini{border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.65); padding:10px}
+
+    .formbox{
+      border:1px dashed rgba(0,0,0,.18);
+      background:rgba(255,255,255,.65);
+      border-radius:var(--r);
+      padding:10px;
+    }
+    iframe{
+      width:100%;
+      min-height:720px;
+      border:0;
+      border-radius:16px;
+      background:rgba(255,255,255,.95);
+    }
+
+    footer{
+      margin-top:18px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>Pieces of Everything</b>
+          <small>year 9–13 writing • anonymous-friendly</small>
+        </div>
+      </div>
+      <nav>
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="read">Read</button>
+        <button class="tab" data-tab="submit">Submit</button>
+        <button class="tab" data-tab="about">About</button>
+      </nav>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="active">
+      <div class="hero">
+        <h1>A safe space for your writing</h1>
+        <p>
+          “Pieces of Everything” is a student-run platform. It welcomes literally everything: poetry, stories, secrets,
+          even your school essays. Whether you want to keep yourself anonymous or leave your name behind,
+          the writer inside you can feel free to explore.
+        </p>
+
+        <div class="row">
+          <span class="pill">🕶️ anonymous or named</span>
+          <span class="pill">📝 poetry • stories • essays • secrets</span>
+          <span class="pill">✨ weekly prompt</span>
+        </div>
+
+        <div class="row">
+          <button class="btn primary" onclick="openTab('submit')">Submit a piece</button>
+          <button class="btn" onclick="openTab('read')">Read pieces</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Featured piece</h2>
+          <p class="muted">Swap this with your first published feature when you’re ready.</p>
+          <div class="line"></div>
+
+          <div class="post">
+            <h3>“(Title)”</h3>
+            <div class="meta">by Pen Name • Type • ~___ words</div>
+            <p class="muted">Add a 2–5 line excerpt here.</p>
+            <div class="tags">
+              <span class="tag">featured</span>
+              <span class="tag">new</span>
+              <span class="tag">your vibe</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Weekly prompt</h2>
+          <div class="mini">
+            <b>Prompt:</b>
+            <div class="muted">Write about something you never say out loud, but you show in small ways.</div>
+          </div>
+
+          <div class="line"></div>
+
+          <h2>Explore</h2>
+          <div class="mini-grid">
+            <div class="mini"><b>Poetry</b><div class="muted">short, sharp, soft, strange</div></div>
+            <div class="mini"><b>Stories</b><div class="muted">flash fiction to full scenes</div></div>
+            <div class="mini"><b>Essays</b><div class="muted">school essays included</div></div>
+            <div class="mini"><b>Secrets</b><div class="muted">anonymous if you want</div></div>
+          </div>
+
+          <div class="line"></div>
+
+          <h2>How it works</h2>
+          <p class="muted">
+            You submit → we review for safety + respect → we publish.
+            Pen names welcome. Keep your voice exactly yours.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- READ -->
+    <section id="read">
+      <div class="card">
+        <h2>Read</h2>
+        <p class="muted">Add your published pieces here. Start with 3–6 and it’ll feel alive instantly.</p>
+        <div class="line"></div>
+
+        <div class="post">
+          <h3>“First piece title”</h3>
+          <div class="meta">by Pen Name • Poetry • 2026</div>
+          <p class="muted">Paste the full piece here.</p>
+          <div class="tags"><span class="tag">poetry</span><span class="tag">year 10</span></div>
+        </div>
+
+        <div class="post">
+          <h3>“Second piece title”</h3>
+          <div class="meta">by Anonymous • Secret • 2026</div>
+          <p class="muted">Paste the full piece here.</p>
+          <div class="tags"><span class="tag">anonymous</span><span class="tag">secret</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBMIT -->
+    <section id="submit">
+      <div class="card">
+        <h2>Submit</h2>
+        <p class="muted">
+          No emailing. Paste your writing into the form below. Anonymous, pen name, or real name.
+        </p>
+        <div class="line"></div>
+
+        <div class="formbox">
+          <!-- Replace this with your Google Form EMBED link:
+               Google Form → Send → <> Embed → copy the src URL -->
+          <iframe
+            src="PASTE_GOOGLE_FORM_EMBED_LINK_HERE"
+            title="Submission form"
+            loading="lazy">
+          </iframe>
+
+          <div class="row">
+            <button class="btn" onclick="window.open('PASTE_GOOGLE_FORM_LINK_HERE','_blank')">
+              Open form in a new tab
+            </button>
+          </div>
+          <p class="muted" style="margin:6px 2px 0">
+            Tip: embedding looks nicer on phones if you use the full embed link (from the &lt;&gt; button).
+          </p>
+        </div>
+
+        <div class="line"></div>
+        <h2>Safety + respect</h2>
+        <p class="muted">
+          We don’t publish bullying or hate. If your piece covers heavy topics, adding a content warning helps.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="card">
+        <h2>About</h2>
+        <p class="muted">
+          Pieces of Everything exists to give writing somewhere to land. Not perfect writing. Real writing.
+          A platform for Year 9–13 students to be heard, safely.
+        </p>
+        <div class="line"></div>
+        <h2>Privacy</h2>
+        <p class="muted">
+          Pen names welcome. Anonymous submissions accepted. If you want something removed later, you can request it.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Pieces of Everything</div>
+      <div>student-run • anonymous-friendly • made with care</div>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll("section");
+
+    function openTab(id){
+      sections.forEach(s => s.classList.toggle("active", s.id === id));
+      tabs.forEach(b => b.classList.toggle("active", b.dataset.tab === id));
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    tabs.forEach(btn => btn.addEventListener("click", () => openTab(btn.dataset.tab)));
+    document.getElementById("year").textContent = new Date().getFullYear();
+    window.openTab = openTab;
+  </script>
+</body>
+</html>
