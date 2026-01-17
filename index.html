@@ -8,357 +8,8 @@
 
   <style>
     :root{
-      --bg:#fff6cc;            /* pastel yellow */
-      --card:rgba(255,255,255,.82);
-      --text:#1c1c22;
-      --muted:#4b4b55;
-      --line:rgba(0,0,0,.10);
-      --accent:#8b5cf6;        /* purple */
-      --accent2:#18a47a;       /* green */
-      --accent3:#ff6b9a;       /* pink */
-      --shadow: 0 10px 30px rgba(0,0,0,.10);
-      --radius: 22px;
-    }
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      color:var(--text);
-      background:
-        radial-gradient(900px 400px at 15% 10%, rgba(139,92,246,.18), transparent 60%),
-        radial-gradient(900px 400px at 85% 0%, rgba(255,107,154,.14), transparent 60%),
-        radial-gradient(900px 400px at 70% 90%, rgba(24,164,122,.14), transparent 55%),
-        var(--bg);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.55;
-    }
-
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:1060px; margin:0 auto; padding:22px 16px 64px}
-
-    /* Top bar */
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-      padding:14px 16px;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      position: sticky; top: 14px; z-index: 50;
-      backdrop-filter: blur(8px);
-    }
-    .brand{display:flex; align-items:center; gap:12px;}
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background: linear-gradient(135deg, rgba(139,92,246,.35), rgba(255,107,154,.28), rgba(24,164,122,.25));
-      border:1px solid var(--line);
-    }
-    .brand b{font-size:16px; letter-spacing:.2px}
-    .brand span{color:var(--muted); font-size:13px}
-
-    nav{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
-    nav button{
-      border:1px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      padding:10px 12px;
-      border-radius: 999px;
-      cursor:pointer;
-      font-size:13px;
-    }
-    nav button.active{
-      color:var(--text);
-      border-color:var(--line);
-      background: rgba(139,92,246,.12);
-    }
-
-    /* Layout blocks */
-    section{display:none}
-    section.active{display:block}
-
-    .hero{
-      margin-top:18px;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding:28px 18px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute; inset:-40px -40px auto auto;
-      width:220px; height:220px; border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,107,154,.35), transparent 55%);
-      transform: rotate(12deg);
-      pointer-events:none;
-    }
-
-    .hero h1{
-      margin:0 0 8px;
-      font-size:42px;
-      letter-spacing:-.3px;
-      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-    }
-    .hero p{
-      margin:0;
-      max-width:820px;
-      color:var(--muted);
-      font-size:15px;
-    }
-
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:16px;
-    }
-    .btn{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.78);
-      padding:11px 13px;
-      border-radius: 14px;
-      cursor:pointer;
-      font-size:14px;
-      color:var(--text);
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-    }
-    .btn.primary{
-      border-color: rgba(139,92,246,.45);
-      background: rgba(139,92,246,.16);
-    }
-
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
-    .pill{
-      border:1px solid var(--line);
-      padding:8px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.65);
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      margin-top:14px;
-    }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
-      .hero h1{font-size:34px}
-    }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding:16px 16px;
-    }
-    .card h2{
-      margin:0 0 10px;
-      font-size:16px;
-      letter-spacing:.2px;
-    }
-    .muted{color:var(--muted); font-size:14px}
-    .line{height:1px; background:var(--line); margin:14px 0}
-
-    .mini-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    @media (max-width: 520px){
-      .mini-grid{grid-template-columns:1fr}
-    }
-    .mini{
-      border:1px solid var(--line);
-      border-radius:16px;
-      background: rgba(255,255,255,.65);
-      padding:12px;
-    }
-    .mini b{display:block; margin-bottom:6px}
-    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .tag{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.7);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .post{
-      border-top:1px solid var(--line);
-      padding-top:12px;
-      margin-top:12px;
-    }
-    .post:first-child{border-top:none; padding-top:0; margin-top:0}
-    .post h3{margin:0 0 4px; font-size:18px}
-    .meta{color:var(--muted); font-size:13px}
-
-    /* Form embed */
-    .formbox{
-      border:1px dashed rgba(0,0,0,.18);
-      border-radius: var(--radius);
-      padding:12px;
-      background: rgba(255,255,255,.60);
-    }
-    iframe{
-      width:100%;
-      min-height:720px;
-      border:0;
-      border-radius: 18px;
-      background: rgba(255,255,255,.9);
-    }
-
-    footer{
-      margin-top:24px;
-      color:var(--muted);
-      font-size:13px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <b>Pieces of Everything</b><br>
-          <span>year 9–13 writing • anonymous-friendly</span>
-        </div>
-      </div>
-      <nav>
-        <button class="tab active" data-tab="home">Home</button>
-        <button class="tab" data-tab="read">Read</button>
-        <button class="tab" data-tab="submit">Submit</button>
-        <button class="tab" data-tab="about">About</button>
-      </nav>
-    </header>
-
-    <!-- HOME -->
-    <section id="home" class="active">
-      <div class="hero">
-        <h1>A safe space for your writing</h1>
-        <p>
-          “Pieces of Everything” is a student-run platform. It welcomes literally everything: poetry, stories, secrets,
-          even your school essays. Whether you want to keep yourself anonymous or leave your name behind,
-          the writer inside you can feel free to explore.
-        </p>
-
-        <div class="pillrow">
-          <div class="pill">🕶️ anonymous or named</div>
-          <div class="pill">📝 poetry • stories • essays • secrets</div>
-          <div class="pill">✨ new prompt each week</div>
-        </div>
-
-        <div class="cta">
-          <button class="btn primary" onclick="openTab('submit')">Submit a piece</button>
-          <button class="btn" onclick="openTab('read')">Read the latest</button>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h2>Featured piece</h2>
-          <p class="muted">Replace this with your first real feature once you’ve published one.</p>
-          <div class="line"></div>
-
-          <div class="post">
-            <h3>“(Your first title here)”</h3>
-            <div class="meta">by Pen Name • Type • ~___ words</div>
-            <p class="muted">
-              Paste a short excerpt here (2–5 lines). Full piece goes on the Read page.
-            </p>
-            <div class="tagrow">
-              <span class="tag">new</span>
-              <span class="tag">featured</span>
-              <span class="tag">your vibe</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>Weekly prompt</h2>
-          <div class="mini">
-            <b>Prompt:</b>
-            <div class="muted">Write about something you never say out loud, but you show in small ways.</div>
-          </div>
-
-          <div class="line"></div>
-
-          <h2>Explore categories</h2>
-          <div class="mini-grid">
-            <div class="mini"><b>Poetry</b><div class="muted">short, sharp, soft, strange</div></div>
-            <div class="mini"><b>Stories</b><div class="muted">flash fiction to full scenes</div></div>
-            <div class="mini"><b>Essays</b><div class="muted">school essays included</div></div>
-            <div class="mini"><b>Secrets</b><div class="muted">anonymous if you want</div></div>
-          </div>
-
-          <div class="line"></div>
-
-          <h2>How it works</h2>
-          <p class="muted">
-            You submit → we review for safety + respect → we publish.
-            Pen names welcome. You can ask for small edits or keep it exactly yours.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- READ -->
-    <section id="read">
-      <div class="card" style="margin-top:18px">
-        <h2>Read</h2>
-        <p class="muted">
-          Add your published pieces here. Start with 3–6 pieces and it will instantly feel “real”.
-        </p>
-
-        <div class="line"></div>
-
-        <div class="post">
-          <h3>“First piece title”</h3>
-          <div class="meta">by Pen Name • Poetry • Published 2026</div>
-          <p class="muted">Paste the full piece here.</p>
-          <div class="tagrow">
-            <span class="tag">poetry</span>
-            <span class="tag">year 10</span>
-          </div>
-        </div>
-
-        <div class="post">
-          <h3>“Second piece title”</h3>
-          <div class="meta">by Anonymous • Secret • Published 2026</div>
-          <p class="muted">Paste the full piece here.</p>
-          <div class="tagrow">
-            <span class="tag">anonymous</span>
-            <span class="tag">secret</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SUBMIT -->
-    <section id="submit">
-      <div class="card" style="margin-top:18px">
-        <h2>Submit</h2>
-        <p class="muted">
-          No emailing needed.<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pieces of Everything</title>
-  <meta name="description" content="A student-run platform welcoming every kind of writing." />
-  <style>
-    :root{
-      --bg:#fff6cc;              /* pale yellow */
-      --card:rgba(255,255,255,.85);
+      --bg:#fff6cc;
+      --card:rgba(255,255,255,.86);
       --text:#1c1c22;
       --muted:#4b4b55;
       --line:rgba(0,0,0,.10);
@@ -433,7 +84,7 @@
     }
     .btn{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.8);
+      background:rgba(255,255,255,.85);
       padding:10px 12px;
       border-radius:14px;
       cursor:pointer;
@@ -441,6 +92,7 @@
       box-shadow:0 6px 16px rgba(0,0,0,.08);
     }
     .btn.primary{background:rgba(139,92,246,.18); border-color:rgba(139,92,246,.45)}
+    .btn.danger{background:rgba(255,107,154,.16); border-color:rgba(255,107,154,.40)}
     .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:12px; margin-top:12px}
     @media (max-width: 900px){ .grid{grid-template-columns:1fr} .hero h1{font-size:32px} }
 
@@ -467,15 +119,44 @@
     @media (max-width: 520px){ .mini-grid{grid-template-columns:1fr} }
     .mini{border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.65); padding:10px}
 
+    /* Interactive submit */
+    label{display:block; font-size:13px; color:var(--muted); margin:10px 0 6px}
+    input, select, textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      font-family:var(--sans);
+      font-size:14px;
+      background:rgba(255,255,255,.9);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:220px; resize:vertical}
+    .stats{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; color:var(--muted); font-size:13px}
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width: 900px){ .split{grid-template-columns:1fr} }
+    .preview{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.65);
+      padding:12px;
+      min-height:220px;
+      white-space:pre-wrap;
+      word-wrap:break-word;
+      font-family:var(--serif);
+    }
+
     .formbox{
       border:1px dashed rgba(0,0,0,.18);
       background:rgba(255,255,255,.65);
       border-radius:var(--r);
       padding:10px;
+      margin-top:12px;
     }
     iframe{
       width:100%;
-      min-height:720px;
+      min-height:640px;
       border:0;
       border-radius:16px;
       background:rgba(255,255,255,.95);
@@ -501,10 +182,10 @@
         </div>
       </div>
       <nav>
-        <button class="tab active" data-tab="home">Home</button>
-        <button class="tab" data-tab="read">Read</button>
-        <button class="tab" data-tab="submit">Submit</button>
-        <button class="tab" data-tab="about">About</button>
+        <button class="tab active" data-tab="home" onclick="openTab('home')">Home</button>
+        <button class="tab" data-tab="read" onclick="openTab('read')">Read</button>
+        <button class="tab" data-tab="submit" onclick="openTab('submit')">Submit</button>
+        <button class="tab" data-tab="about" onclick="openTab('about')">About</button>
       </nav>
     </header>
 
@@ -527,6 +208,7 @@
         <div class="row">
           <button class="btn primary" onclick="openTab('submit')">Submit a piece</button>
           <button class="btn" onclick="openTab('read')">Read pieces</button>
+          <button class="btn" onclick="newPrompt()">New prompt</button>
         </div>
       </div>
 
@@ -552,7 +234,7 @@
           <h2>Weekly prompt</h2>
           <div class="mini">
             <b>Prompt:</b>
-            <div class="muted">Write about something you never say out loud, but you show in small ways.</div>
+            <div class="muted" id="promptText">Write about something you never say out loud, but you show in small ways.</div>
           </div>
 
           <div class="line"></div>
@@ -604,30 +286,79 @@
       <div class="card">
         <h2>Submit</h2>
         <p class="muted">
-          No emailing. Paste your writing into the form below. Anonymous, pen name, or real name.
+          This page is interactive: paste your writing, see a preview + word count, and submit it.
+          (To actually receive submissions, we send them to a Google Form.)
         </p>
+
         <div class="line"></div>
 
+        <div class="split">
+          <div>
+            <label for="who">Name / pen name (optional)</label>
+            <input id="who" placeholder="e.g. Anonymous, a pen name, or your real name" />
+
+            <label for="type">Type</label>
+            <select id="type">
+              <option>Poem</option>
+              <option>Story</option>
+              <option>Essay</option>
+              <option>Secret</option>
+              <option>Other</option>
+            </select>
+
+            <label for="title">Title</label>
+            <input id="title" placeholder="Give it a name (or leave it blank if you want)" />
+
+            <label for="text">Paste your writing</label>
+            <textarea id="text" placeholder="Paste here… (it autosaves on this device)"></textarea>
+
+            <div class="stats">
+              <span id="words">Words: 0</span>
+              <span id="chars">Characters: 0</span>
+              <span id="saved" style="display:none;">Saved ✓</span>
+            </div>
+
+            <div class="row">
+              <button class="btn primary" onclick="submitToForm()">Submit</button>
+              <button class="btn" onclick="clearDraft()">Clear draft</button>
+              <button class="btn" onclick="copyDraft()">Copy text</button>
+            </div>
+
+            <p class="muted" style="margin-top:8px">
+              If “Submit” doesn’t work yet, you probably haven’t added your Google Form link (explained below).
+            </p>
+          </div>
+
+          <div>
+            <label>Preview</label>
+            <div class="preview" id="preview">(Your writing preview will appear here.)</div>
+
+            <div class="line"></div>
+
+            <div class="mini">
+              <b>Tip:</b>
+              <div class="muted">
+                You can run this anonymously. Pen names are normal. This is about writing, not exposure.
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="formbox">
-          <!-- Replace this with your Google Form EMBED link:
-               Google Form → Send → <> Embed → copy the src URL -->
+          <b>Optional: Embed your Google Form here</b>
+          <p class="muted" style="margin:6px 0 10px">
+            Replace the iframe link below with your Google Form embed link (Google Form → Send → &lt;&gt;).
+          </p>
+
           <iframe
             src="PASTE_GOOGLE_FORM_EMBED_LINK_HERE"
             title="Submission form"
             loading="lazy">
           </iframe>
-
-          <div class="row">
-            <button class="btn" onclick="window.open('PASTE_GOOGLE_FORM_LINK_HERE','_blank')">
-              Open form in a new tab
-            </button>
-          </div>
-          <p class="muted" style="margin:6px 2px 0">
-            Tip: embedding looks nicer on phones if you use the full embed link (from the &lt;&gt; button).
-          </p>
         </div>
 
         <div class="line"></div>
+
         <h2>Safety + respect</h2>
         <p class="muted">
           We don’t publish bullying or hate. If your piece covers heavy topics, adding a content warning helps.
@@ -658,18 +389,145 @@
   </div>
 
   <script>
+    // Tabs
     const tabs = document.querySelectorAll(".tab");
     const sections = document.querySelectorAll("section");
-
     function openTab(id){
       sections.forEach(s => s.classList.toggle("active", s.id === id));
       tabs.forEach(b => b.classList.toggle("active", b.dataset.tab === id));
       window.scrollTo({top:0, behavior:"smooth"});
     }
-
-    tabs.forEach(btn => btn.addEventListener("click", () => openTab(btn.dataset.tab)));
-    document.getElementById("year").textContent = new Date().getFullYear();
     window.openTab = openTab;
+
+    // Prompts (simple + fun)
+    const prompts = [
+      "Write about something you never say out loud, but you show in small ways.",
+      "Write about a place that remembers you better than people do.",
+      "Write a “secret” that’s not a confession, but a truth.",
+      "Write an essay paragraph like it’s a poem (or a poem like it’s an essay).",
+      "Write about the moment right before you said something you regret (or don’t).",
+      "Write about a friendship as a weather forecast."
+    ];
+    function newPrompt(){
+      const p = prompts[Math.floor(Math.random() * prompts.length)];
+      document.getElementById("promptText").textContent = p;
+    }
+    window.newPrompt = newPrompt;
+
+    // Interactive submit (autosave + counts + preview)
+    const who = document.getElementById("who");
+    const type = document.getElementById("type");
+    const title = document.getElementById("title");
+    const text = document.getElementById("text");
+    const preview = document.getElementById("preview");
+    const wordsEl = document.getElementById("words");
+    const charsEl = document.getElementById("chars");
+    const savedEl = document.getElementById("saved");
+
+    const KEY = "poe_draft_v1";
+
+    function wordCount(str){
+      const trimmed = str.trim();
+      if(!trimmed) return 0;
+      return trimmed.split(/\s+/).length;
+    }
+
+    function updateUI(){
+      const t = text.value || "";
+      preview.textContent = t ? t : "(Your writing preview will appear here.)";
+      wordsEl.textContent = "Words: " + wordCount(t);
+      charsEl.textContent = "Characters: " + t.length;
+    }
+
+    function saveDraft(){
+      const payload = {
+        who: who.value,
+        type: type.value,
+        title: title.value,
+        text: text.value
+      };
+      localStorage.setItem(KEY, JSON.stringify(payload));
+      savedEl.style.display = "inline";
+      setTimeout(() => savedEl.style.display = "none", 900);
+    }
+
+    function loadDraft(){
+      try{
+        const raw = localStorage.getItem(KEY);
+        if(!raw) return;
+        const payload = JSON.parse(raw);
+        who.value = payload.who || "";
+        type.value = payload.type || "Poem";
+        title.value = payload.title || "";
+        text.value = payload.text || "";
+      }catch(e){}
+    }
+
+    function clearDraft(){
+      if(!confirm("Clear your draft on this device?")) return;
+      who.value = "";
+      type.value = "Poem";
+      title.value = "";
+      text.value = "";
+      localStorage.removeItem(KEY);
+      updateUI();
+    }
+    window.clearDraft = clearDraft;
+
+    async function copyDraft(){
+      try{
+        await navigator.clipboard.writeText(text.value || "");
+        alert("Copied!");
+      }catch(e){
+        alert("Copy didn’t work on this device. You can manually select and copy.");
+      }
+    }
+    window.copyDraft = copyDraft;
+
+    // SUBMIT: opens your Google Form prefilled (you set the base link)
+    // You’ll replace the base link after you create your Google Form.
+    const PREFILL_BASE = "PASTE_PREFILL_FORM_BASE_LINK_HERE";
+
+    function submitToForm(){
+      const writing = (text.value || "").trim();
+      if(!writing){
+        alert("Paste your writing first 💛");
+        return;
+      }
+
+      if(PREFILL_BASE.includes("PASTE_PREFILL_FORM_BASE_LINK_HERE")){
+        alert("You haven’t added your Google Form prefill link yet. Embed the form below, or replace PREFILL_BASE in the code.");
+        return;
+      }
+
+      // We’ll append values to whatever entry fields your prefill link contains.
+      // This works best if your PREFILL_BASE already has entry.123= placeholders.
+      const u = new URL(PREFILL_BASE);
+
+      // If your prefill link already includes these parameter names, we update them.
+      // If not, it still opens the form and the user can paste manually.
+      // (To make it perfect, you’ll use the exact entry IDs from your form.)
+      if(u.searchParams.has("entry.NAME")) u.searchParams.set("entry.NAME", who.value);
+      if(u.searchParams.has("entry.TYPE")) u.searchParams.set("entry.TYPE", type.value);
+      if(u.searchParams.has("entry.TITLE")) u.searchParams.set("entry.TITLE", title.value);
+      if(u.searchParams.has("entry.TEXT")) u.searchParams.set("entry.TEXT", writing);
+
+      // Always save draft before opening
+      saveDraft();
+      window.open(u.toString(), "_blank");
+      alert("Your submission form opened in a new tab 💛");
+    }
+    window.submitToForm = submitToForm;
+
+    // Wire up live updates
+    [who, type, title, text].forEach(el => {
+      el.addEventListener("input", () => { updateUI(); saveDraft(); });
+      el.addEventListener("change", () => { updateUI(); saveDraft(); });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    loadDraft();
+    updateUI();
   </script>
 </body>
 </html>
