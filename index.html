@@ -3,44 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiet Ink</title>
-  <meta name="description" content="A student-run platform for publishing youth writing." />
+  <title>Pieces of Everything</title>
+  <meta name="description" content="A student-run platform welcoming all kinds of writing." />
 
   <style>
     :root{
-      --bg:#0b0c10;
-      --card:#10121a;
-      --text:#e8e8ea;
-      --muted:#b7b7c0;
-      --line:#23263a;
-      --accent:#cbb6ff;
-      --accent2:#7ee0c4;
+      --bg:#fff6cc;
+      --card:rgba(255,255,255,.75);
+      --text:#1c1c22;
+      --muted:#4b4b55;
+      --line:rgba(0,0,0,.10);
+      --accent:#c08bff;
+      --accent2:#2bbf98;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
       font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
       color:var(--text);
-      background: radial-gradient(1200px 600px at 20% -10%, rgba(203,182,255,.18), transparent 55%),
-                  radial-gradient(1000px 500px at 90% 10%, rgba(126,224,196,.14), transparent 55%),
-                  var(--bg);
+      background: var(--bg);
       line-height:1.55;
     }
+
     a{color:inherit; text-decoration:none}
+
     .wrap{max-width:980px; margin:0 auto; padding:28px 18px 60px}
+
     header{
       display:flex; align-items:center; justify-content:space-between; gap:14px;
-      padding:14px 16px; border:1px solid var(--line); border-radius:18px;
-      background: rgba(16,18,26,.75); backdrop-filter: blur(10px);
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background: var(--card);
       position: sticky; top:14px; z-index:50;
     }
+
     .brand{
       display:flex; align-items:baseline; gap:10px;
       letter-spacing:.4px;
     }
+
     .brand b{font-size:18px}
     .brand span{color:var(--muted); font-size:13px}
+
     nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
     nav button{
       border:1px solid transparent;
       background: transparent;
@@ -50,26 +59,28 @@
       cursor:pointer;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:13px;
-      letter-spacing:.2px;
     }
+
     nav button.active{
       color:var(--text);
       border-color:var(--line);
-      background: rgba(203,182,255,.08);
+      background: rgba(192,139,255,.12);
     }
 
     .hero{
       margin-top:22px;
       border:1px solid var(--line);
       border-radius:22px;
-      background: linear-gradient(180deg, rgba(203,182,255,.10), rgba(16,18,26,.55));
+      background: var(--card);
       padding:30px 20px;
     }
+
     .hero h1{
       margin:0 0 10px;
       font-size:44px;
       letter-spacing:.3px;
     }
+
     .hero p{
       margin:0 0 18px;
       max-width:720px;
@@ -77,23 +88,24 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:15px;
     }
+
     .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 2px}
+
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
       border:1px solid var(--line);
       padding:10px 12px;
       border-radius:999px;
-      background: rgba(16,18,26,.55);
+      background: rgba(255,255,255,.6);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size:13px;
       color:var(--muted);
     }
-    .cta{
-      display:flex; gap:12px; flex-wrap:wrap; margin-top:18px
-    }
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+
     .btn{
       border:1px solid var(--line);
-      background: rgba(16,18,26,.75);
+      background: rgba(255,255,255,.75);
       padding:12px 14px;
       border-radius:14px;
       cursor:pointer;
@@ -101,59 +113,45 @@
       font-size:14px;
       color:var(--text);
     }
+
     .btn.primary{
-      border-color: rgba(203,182,255,.45);
-      background: rgba(203,182,255,.12);
+      background: rgba(192,139,255,.25);
+      border-color: rgba(192,139,255,.6);
     }
+
     .grid{
       display:grid;
       grid-template-columns: 1.4fr .9fr;
       gap:16px;
       margin-top:16px;
     }
+
     @media (max-width: 860px){
       .grid{grid-template-columns: 1fr}
-      .hero h1{font-size:38px}
+      .hero h1{font-size:36px}
       nav{justify-content:flex-start}
     }
 
     .card{
       border:1px solid var(--line);
       border-radius:18px;
-      background: rgba(16,18,26,.60);
+      background: var(--card);
       padding:18px 16px;
     }
+
     .card h2{
       margin:0 0 10px;
       font-size:18px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      letter-spacing:.2px;
     }
-    .muted{color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size:14px}
-    .line{height:1px; background:var(--line); margin:14px 0}
 
-    .post{
-      padding:14px 0;
-      border-top:1px solid var(--line);
-    }
-    .post:first-child{border-top:none; padding-top:0}
-    .post h3{margin:0 0 6px; font-size:20px}
-    .meta{
-      color:var(--muted);
-      font-size:13px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      margin-bottom:10px;
-    }
-    .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .tag{
-      border:1px solid var(--line);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
+    .muted{
       color:var(--muted);
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: rgba(16,18,26,.55);
+      font-size:14px;
     }
+
+    .line{height:1px; background:var(--line); margin:14px 0}
 
     footer{
       margin-top:26px;
@@ -163,11 +161,8 @@
       display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
     }
 
-    /* Sections */
     section{display:none}
     section.active{display:block}
-    ul{margin:8px 0 0 18px}
-    code.inline{background: rgba(203,182,255,.10); border:1px solid var(--line); padding:2px 6px; border-radius:8px; font-size:12px}
   </style>
 </head>
 
@@ -175,202 +170,83 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <b>Quiet Ink</b>
-        <span>student-run writing archive</span>
+        <b>Pieces of Everything</b>
+        <span>student-run writing platform</span>
       </div>
       <nav>
         <button class="tab active" data-tab="home">Home</button>
         <button class="tab" data-tab="read">Read</button>
         <button class="tab" data-tab="submit">Submit</button>
         <button class="tab" data-tab="about">About</button>
-        <button class="tab" data-tab="contact">Contact</button>
       </nav>
     </header>
 
-    <!-- HOME -->
     <section id="home" class="active">
       <div class="hero">
-        <h1>A quiet place for loud thoughts.</h1>
+        <h1>A safe space for your writing</h1>
         <p>
-          Quiet Ink is a student-run platform for sharing youth writing: fiction, poetry, essays,
-          reflections, and pieces that don’t fit neatly anywhere else. Pen names welcome.
+          “Pieces of Everything” is a student-run platform. It welcomes literally everything:
+          poetry, stories, secrets, even your school essays. Whether you want to keep yourself
+          anonymous or leave your name behind, the writer inside you can feel free to explore.
         </p>
 
         <div class="pillrow">
-          <div class="pill">✍️ Open to youth writers</div>
-          <div class="pill">🕶️ Pen names / anonymous OK</div>
-          <div class="pill">📚 Curated, edited, respectful</div>
+          <div class="pill">✍️ all writing welcome</div>
+          <div class="pill">🕶️ anonymity optional</div>
+          <div class="pill">💛 gentle & respectful</div>
         </div>
 
         <div class="cta">
-          <button class="btn primary" onclick="openTab('submit')">Submit a piece</button>
-          <button class="btn" onclick="openTab('read')">Read the latest</button>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h2>Latest Feature</h2>
-          <p class="muted">Replace this with your first featured piece once you have one.</p>
-          <div class="line"></div>
-
-          <div class="post">
-            <h3>“The Library After Closing”</h3>
-            <div class="meta">by Pen Name • Fiction • 850 words</div>
-            <p>
-              The lights click off one by one, and the shelves start to breathe. Not in a haunted way.
-              In a “finally, we can be ourselves” way...
-            </p>
-            <div class="tags">
-              <span class="tag">fiction</span>
-              <span class="tag">atmospheric</span>
-              <span class="tag">quiet</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>What we publish</h2>
-          <p class="muted">
-            Short pieces that feel finished, honest, or strangely true.
-          </p>
-          <ul class="muted">
-            <li>Poetry (any style)</li>
-            <li>Flash fiction / short stories</li>
-            <li>Personal essays & reflections</li>
-            <li>Opinion pieces (respectful)</li>
-            <li>Extracts from longer work</li>
-          </ul>
-          <div class="line"></div>
-          <p class="muted">
-            Want a prompt? Try: <span class="inline code">“Write about a secret you can’t tell, but can show.”</span>
-          </p>
+          <button class="btn primary" onclick="openTab('submit')">Submit something</button>
+          <button class="btn" onclick="openTab('read')">Read pieces</button>
         </div>
       </div>
     </section>
 
-    <!-- READ -->
     <section id="read">
       <div class="card" style="margin-top:22px">
         <h2>Read</h2>
-        <p class="muted">Add posts here as you publish them. Keep them short on the homepage, and paste the full text below.</p>
-        <div class="line"></div>
-
-        <div class="post">
-          <h3>“The Library After Closing”</h3>
-          <div class="meta">by Pen Name • Fiction • 850 words • Published Jan 2026</div>
-          <p>
-            <em>Paste the full piece here.</em><br><br>
-            Tip: If you want each piece on its own page later, I can upgrade this into multi-page posts.
-          </p>
-          <div class="tags">
-            <span class="tag">fiction</span>
-            <span class="tag">night</span>
-          </div>
-        </div>
-
-        <div class="post">
-          <h3>“What I Never Said in Class”</h3>
-          <div class="meta">by Another Pen Name • Personal Essay • 600 words • Published Jan 2026</div>
-          <p><em>Paste the full piece here.</em></p>
-          <div class="tags">
-            <span class="tag">essay</span>
-            <span class="tag">school</span>
-            <span class="tag">identity</span>
-          </div>
-        </div>
+        <p class="muted">
+          This space will grow piece by piece. Add writing here as you publish it.
+        </p>
       </div>
     </section>
 
-    <!-- SUBMIT -->
     <section id="submit">
       <div class="card" style="margin-top:22px">
         <h2>Submit</h2>
         <p class="muted">
-          Submissions are reviewed by the editorial team. You can submit with your real name or a pen name.
-          Anonymous submissions are accepted.
+          You can submit with your real name, a pen name, or anonymously.
         </p>
+
         <div class="line"></div>
 
-        <h2 style="margin-top:0">How to submit</h2>
         <p class="muted">
-          Email your piece to: <b>quietink.submissions@gmail.com</b> (replace this with your real email)
+          Email your piece to: <b>piecesofeverything.submissions@gmail.com</b><br>
+          (replace this with your real project email)
         </p>
 
         <div class="line"></div>
 
-        <h2>Include in your email</h2>
-        <ul class="muted">
-          <li>Your name (or pen name)</li>
-          <li>Year level / age range (optional)</li>
-          <li>Title + genre</li>
-          <li>Your piece (in the email or attached as Google Doc)</li>
-          <li>One sentence: “I give permission for Quiet Ink to publish this.”</li>
-        </ul>
-
-        <div class="line"></div>
-
-        <h2>Guidelines</h2>
-        <ul class="muted">
-          <li>Original work only</li>
-          <li>300–1,500 words (flexible)</li>
-          <li>No hate speech; keep it respectful</li>
-          <li>Content warnings appreciated if needed</li>
-        </ul>
-
-        <p class="muted" style="margin-top:14px">
-          Prefer a form? Create a Google Form and paste the link here as a big button.
+        <p class="muted">
+          Original work only. Any length. Any style. Please keep it respectful.
         </p>
-
-        <button class="btn primary" onclick="alert('Replace this button with your Google Form link if you want!')">
-          Submit via Form (optional)
-        </button>
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
       <div class="card" style="margin-top:22px">
         <h2>About</h2>
         <p class="muted">
-          Quiet Ink exists to make publishing feel possible. Not for “perfect” writers — for real ones.
-          We curate youth writing so readers can find pieces that hit, linger, and mean something.
-        </p>
-        <div class="line"></div>
-
-        <h2>Privacy</h2>
-        <p class="muted">
-          Pen names are welcome. If you choose anonymity, we’ll keep your identity private.
-          Editors may also use pen names.
-        </p>
-
-        <div class="line"></div>
-
-        <h2>Editorial note</h2>
-        <p class="muted">
-          We edit lightly for clarity (with permission). We don’t change your voice.
-        </p>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="card" style="margin-top:22px">
-        <h2>Contact</h2>
-        <p class="muted">
-          For questions, collaborations, or school club partnerships:
-        </p>
-        <p class="muted"><b>quietink.editorial@gmail.com</b> (replace this)</p>
-        <div class="line"></div>
-        <p class="muted">
-          If you want to stay anonymous, use a new email account just for Quiet Ink.
+          Pieces of Everything exists to give writing somewhere to land.
+          Not perfect writing. Honest writing.
         </p>
       </div>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Quiet Ink</div>
-      <div class="muted">Student-run • Pen names welcome</div>
+      <div>© <span id="year"></span> Pieces of Everything</div>
+      <div>student-run • anonymous-friendly</div>
     </footer>
   </div>
 
@@ -390,3 +266,4 @@
   </script>
 </body>
 </html>
+
